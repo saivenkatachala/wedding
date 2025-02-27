@@ -81,19 +81,10 @@
             padding: 10px;
         }
 
-        /* Love & Petal Effects */
-        .hearts, .petals {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .heart, .petal {
-            position: absolute;
+        /* Floating Hearts & Petals */
+        .floating {
+            position: fixed;
+            top: -50px;
             width: 30px;
             height: 30px;
             background-size: contain;
@@ -103,7 +94,7 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-50px) scale(0.8); opacity: 1; }
+            0% { transform: translateY(0) scale(0.8); opacity: 1; }
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
@@ -122,7 +113,6 @@
     <!-- Navigation Buttons -->
     <div class="buttons">
         <a href="functions.html">View Wedding Functions</a>
-        
     </div>
 
     <!-- Cherished Moments Section -->
@@ -150,32 +140,27 @@
         </div>
     </div>
 
-    <!-- Hearts and Petals Effect -->
-    <div class="hearts"></div>
-    <div class="petals"></div>
-
     <script>
-        function createFloatingElement(className, imageSrc) {
+        function createFloatingElement(imageSrc) {
             let element = document.createElement("div");
-            element.className = className;
+            element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
             element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
-            setTimeout(() => document.body.removeChild(element), 7000);
+            setTimeout(() => document.body.removeChild(element), 10000);
         }
 
         function startEffects() {
             setInterval(() => {
-                createFloatingElement("heart", "lv1.png");
-                createFloatingElement("heart", "hh1.png");
-                createFloatingElement("heart", "h2.png");
-                createFloatingElement("heart", "h3.png");
-                createFloatingElement("heart", "pngegg.png");
-                createFloatingElement("petal", "p1.png");
-                createFloatingElement("petal", "ph1.png");
-                
-            }, 600);
+                createFloatingElement("lv1.png");
+                createFloatingElement("hh1.png");
+                createFloatingElement("h2.png");
+
+                createFloatingElement("pngegg.png");
+                createFloatingElement("p1.png");
+                createFloatingElement("ph1.png");
+            }, 500);
         }
 
         window.onload = startEffects;
