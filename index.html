@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="h3.png">
+    <title>Sasi & Pooja's Wedding Moments 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        body {
+            background-color: #f5ebe0;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #d6336c;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            margin: 10px auto;
+            width: 90%;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons a {
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            background: #ff6b6b;
+            color: white;
+            transition: 0.3s;
+        }
+        .buttons a:hover {
+            background: #e63946;
+        }
+
+        /* Moments Section */
+        .moments {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .moment {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .moment img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .moment:hover {
+            transform: scale(1.05);
+        }
+        .moment-text {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            color: white;
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        /* Love & Petal Effects */
+        .hearts, .petals {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart, .petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) scale(0.8); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Sasi & Pooja's Wedding Memories 💖</h1>
+    <p>"A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!"</p>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <a href="functions.html">View Wedding Functions</a>
+        
+    </div>
+
+    <!-- Cherished Moments Section -->
+    <h2 style="margin-top: 30px; color: #d6336c;">✨ Cherished Moments ✨</h2>
+    <div class="moments">
+        <div class="moment" onclick="location.href='eng.html'">
+            <img src="_SM44474.JPG">
+            <div class="moment-text">Engagement</div>
+        </div>
+        <div class="moment" onclick="location.href='new.html'">
+            <img src="_SM44457.JPG">
+            <div class="moment-text">Mehendi Ceremony</div>
+        </div>
+        <div class="moment" onclick="location.href='haldi.html'">
+            <img src="_SM44474.JPG">
+            <div class="moment-text">Haldi Ceremony</div>
+        </div>
+        <div class="moment" onclick="location.href='sangeet.html'">
+            <img src="_SM44480.JPG">
+            <div class="moment-text">Sangeet Night</div>
+        </div>
+        <div class="moment" onclick="location.href='wedding.html'">
+            <img src="_SM44474.JPG">
+            <div class="moment-text">The Wedding</div>
+        </div>
+    </div>
+
+    <!-- Hearts and Petals Effect -->
+    <div class="hearts"></div>
+    <div class="petals"></div>
+
+    <script>
+        function createFloatingElement(className, imageSrc) {
+            let element = document.createElement("div");
+            element.className = className;
+            element.style.left = Math.random() * window.innerWidth + "px";
+            element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
+            element.style.backgroundImage = `url(${imageSrc})`;
+            document.body.appendChild(element);
+            setTimeout(() => document.body.removeChild(element), 7000);
+        }
+
+        function startEffects() {
+            setInterval(() => {
+                createFloatingElement("heart", "lv1.png");
+                createFloatingElement("heart", "hh1.png");
+                createFloatingElement("heart", "h2.png");
+                createFloatingElement("heart", "h3.png");
+                createFloatingElement("heart", "pngegg.png");
+                createFloatingElement("petal", "p1.png");
+                createFloatingElement("petal", "ph1.png");
+                
+            }, 600);
+        }
+
+        window.onload = startEffects;
+    </script>
+
+</body>
+</html>

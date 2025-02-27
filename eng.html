@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="123.png">
+  <title>Engagement Gallery</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal (Full-Screen Image Viewer) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 5px;
+      object-fit: contain; /* Ensures full image is visible */
+    }
+
+    /* Navigation & Options */
+    .modal-options {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .modal-options button {
+      padding: 12px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #fff;
+      transition: background 0.2s ease;
+      font-weight: bold;
+    }
+
+    .modal-options button:hover {
+      background: #ddd;
+    }
+
+    .nav-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .nav-buttons button {
+      padding: 12px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      background: #fff;
+      transition: background 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      background: #ddd;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 2rem;
+      color: #fff;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+
+      .gallery img {
+        height: 120px;
+      }
+
+      .modal-options {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .modal-content {
+        max-width: 95%;
+        max-height: 75vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Gallery</h2>
+  <div class="gallery" id="gallery">
+    <!-- Gallery images will be injected here -->
+  </div>
+
+
+   <!-- Back to functions button -->
+  <div style="margin-top: 30px; text-align: center;">
+    <button onclick="goBack()" style="
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    " 
+    onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
+      ⬅ Back to Functions
+    </button>
+
+
+
+
+
+  <!-- Modal for Full-Screen Image View -->
+  <div class="modal" id="modal">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modal-image" src="" alt="Full view image" />
+    
+    <div class="nav-buttons">
+      <button onclick="prevImage()">&#10094;</button>
+      <button onclick="nextImage()">&#10095;</button>
+    </div>
+    
+    <div class="modal-options">
+      <button onclick="downloadImage()">Download</button>
+      <button onclick="copyImage()">Copy</button>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    const folderIds = [
+      "1oezSWAGZIecSwrL7NLj9uOGGsOTwa06s",
+      "1goYZc631Xe12E-pifBZnRvJHbQfSGBMU",
+      "1lA6b9chPzpx6E1TGzU1_kS2XwzxvGZ7o",
+      "1bFnZjd5mptFSmLUJucOcjLDKLOm_hzkG",
+      "1XXsqVQjau6-THaocv4XAalPleXCisfbj",
+      
+      
+    ];
+    const apiKey = "AIzaSyDgn638KyxLmH-ja8fvQXZBqxJKqAIrV0U";
+
+    let images = []; 
+    let currentIndex = 0;
+
+    async function fetchImages() {
+      for (let folderId of folderIds) {
+        const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&fields=files(id,name,mimeType,thumbnailLink)&key=${apiKey}`;
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          if (data.files && data.files.length) {
+            data.files.forEach(file => {
+              if (file.mimeType.startsWith("image/")) {
+                images.push(file);
+              }
+            });
+          }
+        } catch (error) {
+          console.error("Error fetching images:", error);
+        }
+      }
+      displayGallery();
+    }
+
+    function displayGallery() {
+      const gallery = document.getElementById("gallery");
+      gallery.innerHTML = "";
+      images.forEach((file, index) => {
+        const img = document.createElement("img");
+        img.src = file.thumbnailLink;
+        img.alt = file.name;
+        img.onclick = () => openModal(index);
+        gallery.appendChild(img);
+      });
+    }
+
+    function openModal(index) {
+      currentIndex = index;
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-image");
+
+      modal.style.display = "flex";
+      modalImg.src = `https://lh3.googleusercontent.com/d/${images[currentIndex].id}=s2000`; 
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById("modal-image").src = `https://lh3.googleusercontent.com/d/${images[currentIndex].id}=s2000`;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      document.getElementById("modal-image").src = `https://lh3.googleusercontent.com/d/${images[currentIndex].id}=s2000`;
+    }
+
+    function downloadImage() {
+      const fileId = images[currentIndex].id;
+      const link = document.createElement("a");
+      link.href = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      link.download = images[currentIndex].name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function copyImage() {
+  const fileId = images[currentIndex].id;
+  const imageUrl = `https://lh3.googleusercontent.com/d/${fileId}=s2000`;
+
+  navigator.clipboard.writeText(imageUrl).then(() => {
+    alert("Image URL copied to clipboard!");
+  }).catch(err => {
+    alert("Failed to copy image URL: " + err);
+  });
+}
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("modal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    fetchImages();
+    function goBack() {
+      window.location.href = "functions.html"; // Change this to the actual functions page
+    }
+  </script>
+</body>
+</html>

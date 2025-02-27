@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="h3.png">
+    <title>Wedding Functions</title>
+    <style>
+        body { text-align: center; font-family: 'Times New Roman', serif; background: #f8f1f1; }
+        h1 { color: #d6336c; margin-top: 20px; }
+        .function-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .function-card {
+            width: 250px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #ffcad4;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .function-card:hover {
+            background: #ff92a1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Our Wedding Functions 🎉</h1>
+    <div class="function-list">
+        <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
+        <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
+        <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
+        <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
+        <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
+    </div>
+    <div style="margin-top: 30px; text-align: center;">
+        <button onclick="goBack()" style="
+          padding: 12px 25px;
+          font-size: 1.1rem;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          background: linear-gradient(45deg, #ff416c, #ff4b2b);
+          color: white;
+          font-weight: bold;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        " 
+        onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
+          ⬅ Back to Moments
+        </button>
+        <script>
+            function goBack() {
+              window.location.href = "index.html"; // Replace with actual functions page URL
+            }
+          </script>
+
+</body>
+</html>
