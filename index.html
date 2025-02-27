@@ -15,7 +15,8 @@
         body {
             background-color: #f5ebe0;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         h1 {
             font-size: 2.5rem;
@@ -45,7 +46,6 @@
             background: #e63946;
         }
 
-        /* Moments Section */
         .moments {
             display: flex;
             flex-wrap: wrap;
@@ -61,11 +61,13 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
+            will-change: transform;
         }
         .moment img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            loading: lazy;
         }
         .moment:hover {
             transform: scale(1.05);
@@ -81,7 +83,6 @@
             padding: 10px;
         }
 
-        /* Floating Hearts & Petals */
         .floating {
             position: fixed;
             top: -50px;
@@ -91,6 +92,7 @@
             background-repeat: no-repeat;
             opacity: 0.8;
             animation: fall linear infinite;
+            pointer-events: none;
         }
 
         @keyframes fall {
@@ -98,7 +100,6 @@
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             p { font-size: 1rem; }
@@ -110,57 +111,51 @@
     <h1>Welcome to Sasi & Pooja's Wedding Memories 💖</h1>
     <p>"A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!"</p>
 
-    <!-- Navigation Buttons -->
     <div class="buttons">
         <a href="functions.html">View Wedding Functions</a>
     </div>
 
-    <!-- Cherished Moments Section -->
     <h2 style="margin-top: 30px; color: #d6336c;">✨ Cherished Moments ✨</h2>
     <div class="moments">
-        <div class="moment" onclick="location.href='eng.html'">
-            <img src="e1.jpg">
-            <div class="moment-text">Engagement</div>
-        </div>
-        <div class="moment" onclick="location.href='mehendi.html'">
-            <img src="e1.jpg">
-            <div class="moment-text">Mehendi Ceremony</div>
-        </div>
-        <div class="moment" onclick="location.href='haldi.html'">
-            <img src="e1.jpg">
-            <div class="moment-text">Haldi Ceremony</div>
-        </div>
-        <div class="moment" onclick="location.href='sangeet.html'">
-            <img src="e1.jpg">
-            <div class="moment-text">Sangeet Night</div>
-        </div>
-        <div class="moment" onclick="location.href='wedding.html'">
-            <img src="e1.jpg">
-            <div class="moment-text">The Wedding</div>
-        </div>
+        <div class="moment" onclick="location.href='eng.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Engagement</div></div>
+        <div class="moment" onclick="location.href='mehendi.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Mehendi Ceremony</div></div>
+        <div class="moment" onclick="location.href='haldi.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Haldi Ceremony</div></div>
+        <div class="moment" onclick="location.href='sangeet.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Sangeet Night</div></div>
+        <div class="moment" onclick="location.href='wedding.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">The Wedding</div></div>
     </div>
 
     <script>
+        let maxFloatingElements = 20;
+        let floatingElements = [];
+
         function createFloatingElement(imageSrc) {
+            if (floatingElements.length >= maxFloatingElements) return;
+
             let element = document.createElement("div");
             element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
-            element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
+            element.style.animationDuration = (5 + Math.random() * 5) + "s";
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
-            setTimeout(() => document.body.removeChild(element), 10000);
+            floatingElements.push(element);
+
+            setTimeout(() => {
+                document.body.removeChild(element);
+                floatingElements = floatingElements.filter(e => e !== element);
+            }, 10000);
         }
 
         function startEffects() {
-            setInterval(() => {
+            function animate() {
                 createFloatingElement("lv1.png");
                 createFloatingElement("hh1.png");
                 createFloatingElement("h2.png");
-
                 createFloatingElement("pngegg.png");
                 createFloatingElement("p1.png");
                 createFloatingElement("ph1.png");
-            }, 500);
+                requestAnimationFrame(animate);
+            }
+            animate();
         }
 
         window.onload = startEffects;
