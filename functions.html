@@ -85,6 +85,10 @@
     </div>
 
     <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
+    <audio id="bg-music" loop>
+        <source src="ad2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function goBack() {
@@ -113,6 +117,30 @@
         }
 
         window.onload = startEffects;
+
+        document.addEventListener("DOMContentLoaded", () => {
+        let music = document.getElementById("bg-music");
+        
+        // Retrieve last known time position
+        let lastTime = localStorage.getItem("musicTime");
+
+        if (lastTime) {
+            music.currentTime = lastTime;  // Resume music from last saved time
+        }
+
+        let playPromise = music.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                console.log("Autoplay blocked. Waiting for user interaction...");
+                document.addEventListener("click", () => music.play(), { once: true });
+            });
+        }
+
+        // Save the current time periodically
+        setInterval(() => {
+            localStorage.setItem("musicTime", music.currentTime);
+        }, 1000);
+    });
     </script>
 
 </body>
