@@ -6,7 +6,7 @@
     <link rel="icon" href="h3.png">
     <title>Wedding Functions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    
     <style>
         * {
             margin: 0;
@@ -16,148 +16,153 @@
 
         html, body {
             height: 100%;
+            display: flex;
+            flex-direction: column;
             text-align: center;
             font-family: 'Times New Roman', serif;
             background: #f8f1f1;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow: hidden;
         }
 
         .content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 80vh;
-            padding: 20px;
+            position: relative;
+            padding: 40px;
         }
 
         h1 {
             color: #d6336c;
-            margin-bottom: 15px;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
         .function-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            width: 90%;
-            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .function-card {
+            width: 250px;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             background: #ffcad4;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 1.2rem;
-            text-align: center;
+            transition: all 0.3s ease-in-out;
+            font-size: 1.3rem;
         }
 
-        .function-card:hover {
+        .function-card:hover, .function-card:active {
             background: #ff92a1;
             transform: scale(1.05);
         }
 
         .back-btn {
-            margin-top: 20px;
+            margin-top: 40px;
             padding: 12px 25px;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
             font-weight: bold;
-            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
         }
 
-        .back-btn:hover {
+        .back-btn:hover, .back-btn:active {
             transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
         .contact-section {
+            margin-top: 30px;
             text-align: center;
-            margin-top: 20px;
         }
 
         .contact-message {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #415a77;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .contact-btn {
             display: inline-block;
             background: #ffcc00;
             color: #222;
-            font-size: 1.1rem;
-            padding: 10px 18px;
+            font-size: 1.3rem;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
-            transition: 0.3s ease-in-out;
+            box-shadow: 0px 5px 12px rgba(255, 204, 0, 0.7);
+            transition: all 0.3s ease-in-out;
         }
 
-        .contact-btn:hover {
+        .contact-btn:hover, .contact-btn:active {
             background: #ff9900;
             transform: scale(1.1);
+            box-shadow: 0px 5px 18px rgba(255, 153, 0, 1);
         }
 
         footer {
             background-color: #fb6f92;
             color: #ffebcd;
             text-align: center;
-            padding: 15px;
-            font-size: 1rem;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
             width: 100%;
         }
 
-        .social-links a {
+        footer .social-links a {
             color: #ffd700;
             margin: 0 10px;
-            font-size: 20px;
-            transition: transform 0.3s;
+            font-size: 24px;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
         }
 
-        .social-links a:hover {
+        footer .social-links a:hover, footer .social-links a:active {
             color: #fff;
-            transform: translateY(-3px);
+            transform: scale(1.2);
         }
 
         .floating {
             position: fixed;
-            width: 30px;
-            height: 30px;
+            top: -80px;
+            width: 50px;
+            height: 50px;
             background-size: contain;
             background-repeat: no-repeat;
-            opacity: 0.8;
+            opacity: 0.9;
             animation: fall linear infinite;
         }
 
         @keyframes fall {
-            0% { transform: translateY(-50px); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            0% { transform: translateY(0) scale(0.9); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1.3); opacity: 0; }
         }
 
-        @media (max-width: 768px) {
-            .function-list {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        @media screen and (max-width: 600px) {
+            .function-card {
+                width: 220px;
+                font-size: 1.2rem;
+            }
+
+            .back-btn, .contact-btn {
+                font-size: 1.1rem;
+                padding: 10px 18px;
             }
 
             h1 {
-                font-size: 1.8rem;
-            }
-
-            .back-btn {
-                font-size: 0.9rem;
-                padding: 10px 20px;
-            }
-
-            .contact-btn {
-                font-size: 1rem;
-                padding: 8px 15px;
+                font-size: 2rem;
             }
         }
 
@@ -176,12 +181,11 @@
         </div>
         <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
     </div>
-
+    
     <div class="contact-section">
         <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
         <a href="con1.html" class="contact-btn">Contact Us</a>
     </div>
-
     <audio id="bg-music" loop>
         <source src="aa3.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -206,7 +210,7 @@
             let element = document.createElement("div");
             element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
-            element.style.animationDuration = (4 + Math.random() * 4) + "s"; 
+            element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
             setTimeout(() => document.body.removeChild(element), 9000);
@@ -215,18 +219,33 @@
         function startEffects() {
             setInterval(() => {
                 createFloatingElement("lv1.png");
-            }, 1000);
+                createFloatingElement("hh1.png");
+            }, 700);
         }
 
         window.onload = startEffects;
 
         document.addEventListener("DOMContentLoaded", () => {
             let music = document.getElementById("bg-music");
+            
+            let lastTime = localStorage.getItem("musicTime");
 
-            music.play().catch(() => {
-                document.addEventListener("click", () => music.play(), { once: true });
-            });
+            if (lastTime) {
+                music.currentTime = lastTime;
+            }
+
+            let playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    document.addEventListener("click", () => music.play(), { once: true });
+                });
+            }
+
+            setInterval(() => {
+                localStorage.setItem("musicTime", music.currentTime);
+            }, 1000);
         });
     </script>
+
 </body>
 </html>
