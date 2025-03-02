@@ -5,7 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="h2.png">
     <title>Sasi & Pooja's Wedding Moments 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+    /* Floating Contact Button */
+/* Contact Section */
+
+
+/* Message */
+.contact-message {
+    font-size: 1.3rem;
+    color: #415a77; /* Gold color */
+    margin-bottom: 15px;
+}
+
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: #222;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
+    transition: 0.3s ease-in-out;
+}
+
+.contact-btn:hover {
+    background: #ff9900;
+    transform: scale(1.1);
+    box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
+}
+
+
+/* Footer */
+footer {
+    background-color: #fb6f92;
+    color: #ffebcd; /* Brighter text */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Developer Message */
+footer .developer-message {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #457b9d; /* Slightly lighter */
+}
+
+/* Social Links */
+footer .social-links a {
+    color: #ffd700; /* Brighter gold color */
+    margin: 0 10px;
+    font-size: 24px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    display: inline-block;
+}
+
+/* 3D Rising Effect */
+footer .social-links a:hover {
+    color: #fff;
+    transform: translateY(-5px) scale(1.2);
+    text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9); /* Brighter glow */
+}
+
+
+/* Main */
         * {
             margin: 0;
             padding: 0;
@@ -127,6 +197,26 @@
         <source src="ad1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <!-- Contact Button -->
+    <div class="contact-section">
+        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
+        <a href="con1.html" class="contact-btn">Contact Us</a>
+    </div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
+        <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
+        <div class="social-links">
+            <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
 
     <script>
         let maxFloatingElements = 20;
