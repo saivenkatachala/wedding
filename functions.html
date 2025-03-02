@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="h3.png">
     <title>Wedding Functions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
@@ -16,14 +14,18 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             text-align: center;
             font-family: 'Times New Roman', serif;
             background: #f8f1f1;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .content {
@@ -32,12 +34,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
+            padding: 20px;
         }
 
         h1 {
             color: #d6336c;
-            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 2rem;
         }
 
         .function-list {
@@ -45,78 +48,81 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            margin-top: 20px;
+            max-width: 90%;
         }
 
         .function-card {
-            width: 250px;
-            padding: 15px;
+            width: 200px;
+            padding: 12px;
             border-radius: 10px;
             background: #ffcad4;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 1.2rem;
+            transition: transform 0.3s, background 0.3s;
+            font-size: 1rem;
+            text-align: center;
         }
 
         .function-card:hover {
             background: #ff92a1;
+            transform: scale(1.05);
         }
 
         .back-btn {
             margin-top: 30px;
-            padding: 12px 25px;
-            font-size: 1.1rem;
+            padding: 10px 20px;
+            font-size: 1rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
         }
 
         .back-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-message {
+            font-size: 1rem;
+            color: #415a77;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: #ffcc00;
+            color: #222;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .contact-btn:hover {
+            background: #ff9900;
         }
 
         footer {
             background-color: #fb6f92;
-            color: #ffebcd;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: auto;
-            width: 100%;
-        }
-
-        footer .developer-message {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #457b9d;
-        }
-
-        footer .social-links a {
-            color: #ffd700;
-            margin: 0 10px;
-            font-size: 24px;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-            display: inline-block;
-        }
-
-        footer .social-links a:hover {
             color: #fff;
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1rem;
+            width: 100%;
         }
 
         .floating {
             position: fixed;
             top: -50px;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 0.8;
@@ -128,31 +134,22 @@
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
-        .contact-message {
-    font-size: 1.3rem;
-    color: #415a77; /* Gold color */
-    margin-bottom: 15px;
-}
+        @media (max-width: 768px) {
+            .function-card {
+                width: 150px;
+                font-size: 0.9rem;
+                padding: 10px;
+            }
 
-/* Contact Button */
-.contact-btn {
-    display: inline-block;
-    background: #ffcc00;
-    color: #222;
-    font-size: 1.2rem;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
-    transition: 0.3s ease-in-out;
-}
+            h1 {
+                font-size: 1.5rem;
+            }
 
-.contact-btn:hover {
-    background: #ff9900;
-    transform: scale(1.1);
-    box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
-}
-
+            .back-btn, .contact-btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -161,34 +158,22 @@
         <h1>Our Wedding Functions 🎉</h1>
         <div class="function-list">
             <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
-            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
-            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
-            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
-            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
+            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi</div>
+            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi</div>
+            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet</div>
+            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding</div>
         </div>
-        <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
     </div>
+
     <div class="contact-section">
-        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
+        <p class="contact-message">For any queries, feel free to contact us!</p>
         <a href="con1.html" class="contact-btn">Contact Us</a>
     </div>
 
-    <audio id="bg-music" loop>
-        <source src="aa3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <footer>
-        <div class="footer-container">
-            <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
-            <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
-            <div class="social-links">
-                <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
-                <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
+        <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
+        <p>Designed by SAI VENKAT 💖</p>
     </footer>
 
     <script>
@@ -200,33 +185,25 @@
             let element = document.createElement("div");
             element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
-            element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
+            element.style.animationDuration = (4 + Math.random() * 4) + "s"; 
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
-            setTimeout(() => document.body.removeChild(element), 10000);
+            setTimeout(() => document.body.removeChild(element), 8000);
         }
 
         function startEffects() {
             setInterval(() => {
                 createFloatingElement("lv1.png");
                 createFloatingElement("hh1.png");
-                createFloatingElement("h2.png");
-                createFloatingElement("pngegg.png");
-                createFloatingElement("p1.png");
-                createFloatingElement("ph1.png");
-            }, 500);
+            }, 1000);
         }
 
-        window.onload = startEffects;
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let music = document.getElementById("bg-music");
-            
-            let lastTime = localStorage.getItem("musicTime");
-
-            if (lastTime) {
-                music.currentTime = lastTime;
-            }
+        window.onload = () => {
+            startEffects();
+            let music = document.createElement("audio");
+            music.src = "aa3.mp3";
+            music.loop = true;
+            document.body.appendChild(music);
 
             let playPromise = music.play();
             if (playPromise !== undefined) {
@@ -234,11 +211,8 @@
                     document.addEventListener("click", () => music.play(), { once: true });
                 });
             }
-
-            setInterval(() => {
-                localStorage.setItem("musicTime", music.currentTime);
-            }, 1000);
-        });
+        };
     </script>
+
 </body>
 </html>
