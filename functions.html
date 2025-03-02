@@ -6,7 +6,7 @@
     <link rel="icon" href="h3.png">
     <title>Wedding Functions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -14,51 +14,45 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+        html, body {
+            height: 100%;
             text-align: center;
             font-family: 'Times New Roman', serif;
             background: #f8f1f1;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .content {
-            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 80vh;
             padding: 20px;
         }
 
         h1 {
             color: #d6336c;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 2rem;
         }
 
         .function-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            max-width: 90%;
+            width: 90%;
+            max-width: 800px;
         }
 
         .function-card {
-            width: 200px;
-            padding: 12px;
+            padding: 15px;
             border-radius: 10px;
             background: #ffcad4;
             cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
-            font-size: 1rem;
+            transition: 0.3s;
+            font-size: 1.2rem;
             text-align: center;
         }
 
@@ -68,8 +62,8 @@
         }
 
         .back-btn {
-            margin-top: 30px;
-            padding: 10px 20px;
+            margin-top: 20px;
+            padding: 12px 25px;
             font-size: 1rem;
             border: none;
             border-radius: 25px;
@@ -77,7 +71,7 @@
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
             font-weight: bold;
-            transition: transform 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
         }
 
         .back-btn:hover {
@@ -90,39 +84,52 @@
         }
 
         .contact-message {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #415a77;
+            margin-bottom: 10px;
         }
 
         .contact-btn {
             display: inline-block;
             background: #ffcc00;
             color: #222;
-            font-size: 1rem;
-            padding: 10px 15px;
-            border-radius: 25px;
+            font-size: 1.1rem;
+            padding: 10px 18px;
+            border-radius: 50px;
             text-decoration: none;
             transition: 0.3s ease-in-out;
         }
 
         .contact-btn:hover {
             background: #ff9900;
+            transform: scale(1.1);
         }
 
         footer {
             background-color: #fb6f92;
-            color: #fff;
+            color: #ffebcd;
             text-align: center;
-            padding: 15px 0;
+            padding: 15px;
             font-size: 1rem;
             width: 100%;
         }
 
+        .social-links a {
+            color: #ffd700;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
         .floating {
             position: fixed;
-            top: -50px;
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 0.8;
@@ -130,26 +137,30 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(0) scale(0.8); opacity: 1; }
-            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+            0% { transform: translateY(-50px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
 
         @media (max-width: 768px) {
-            .function-card {
-                width: 150px;
-                font-size: 0.9rem;
-                padding: 10px;
+            .function-list {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
-            .back-btn, .contact-btn {
+            .back-btn {
                 font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+
+            .contact-btn {
+                font-size: 1rem;
                 padding: 8px 15px;
             }
         }
+
     </style>
 </head>
 <body>
@@ -158,22 +169,32 @@
         <h1>Our Wedding Functions 🎉</h1>
         <div class="function-list">
             <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
-            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi</div>
-            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi</div>
-            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet</div>
-            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding</div>
+            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
+            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
+            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
+            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
         </div>
-        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+        <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
     </div>
 
     <div class="contact-section">
-        <p class="contact-message">For any queries, feel free to contact us!</p>
+        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
         <a href="con1.html" class="contact-btn">Contact Us</a>
     </div>
 
+    <audio id="bg-music" loop>
+        <source src="aa3.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <footer>
         <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
-        <p>Designed by SAI VENKAT 💖</p>
+        <div class="social-links">
+            <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
 
     <script>
@@ -188,31 +209,24 @@
             element.style.animationDuration = (4 + Math.random() * 4) + "s"; 
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
-            setTimeout(() => document.body.removeChild(element), 8000);
+            setTimeout(() => document.body.removeChild(element), 9000);
         }
 
         function startEffects() {
             setInterval(() => {
                 createFloatingElement("lv1.png");
-                createFloatingElement("hh1.png");
             }, 1000);
         }
 
-        window.onload = () => {
-            startEffects();
-            let music = document.createElement("audio");
-            music.src = "aa3.mp3";
-            music.loop = true;
-            document.body.appendChild(music);
+        window.onload = startEffects;
 
-            let playPromise = music.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    document.addEventListener("click", () => music.play(), { once: true });
-                });
-            }
-        };
+        document.addEventListener("DOMContentLoaded", () => {
+            let music = document.getElementById("bg-music");
+
+            music.play().catch(() => {
+                document.addEventListener("click", () => music.play(), { once: true });
+            });
+        });
     </script>
-
 </body>
 </html>
