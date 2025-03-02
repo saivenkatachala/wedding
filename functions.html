@@ -5,17 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="h3.png">
     <title>Wedding Functions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <style>
-        body { 
-            text-align: center; 
-            font-family: 'Times New Roman', serif; 
-            background: #f8f1f1; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            background: #f8f1f1;
             overflow: hidden;
         }
-        h1 { 
-            color: #d6336c; 
-            margin-top: 20px; 
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
+
+        h1 {
+            color: #d6336c;
+            margin-top: 20px;
+        }
+
         .function-list {
             display: flex;
             flex-wrap: wrap;
@@ -23,6 +47,7 @@
             gap: 15px;
             margin-top: 20px;
         }
+
         .function-card {
             width: 250px;
             padding: 15px;
@@ -32,11 +57,61 @@
             transition: 0.3s;
             font-size: 1.2rem;
         }
+
         .function-card:hover {
             background: #ff92a1;
         }
 
-        /* Floating Hearts & Petals */
+        .back-btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #fb6f92;
+            color: #ffebcd;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer .developer-message {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #457b9d;
+        }
+
+        footer .social-links a {
+            color: #ffd700;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        footer .social-links a:hover {
+            color: #fff;
+            transform: translateY(-5px) scale(1.2);
+            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
+        }
+
         .floating {
             position: fixed;
             top: -50px;
@@ -53,42 +128,68 @@
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
-        /* Back Button */
-        .back-btn {
-            margin-top: 30px;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
-        }
-        .back-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
+        .contact-message {
+    font-size: 1.3rem;
+    color: #415a77; /* Gold color */
+    margin-bottom: 15px;
+}
+
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: #222;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
+    transition: 0.3s ease-in-out;
+}
+
+.contact-btn:hover {
+    background: #ff9900;
+    transform: scale(1.1);
+    box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
+}
+
     </style>
 </head>
 <body>
 
-    <h1>Our Wedding Functions 🎉</h1>
-    <div class="function-list">
-        <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
-        <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
-        <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
-        <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
-        <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
+    <div class="content">
+        <h1>Our Wedding Functions 🎉</h1>
+        <div class="function-list">
+            <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
+            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
+            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
+            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
+            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
+        </div>
+        <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
+    </div>
+    <div class="contact-section">
+        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
+        <a href="con1.html" class="contact-btn">Contact Us</a>
     </div>
 
-    <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
     <audio id="bg-music" loop>
         <source src="aa3.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
+            <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
+            <div class="social-links">
+                <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
+                <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function goBack() {
@@ -119,29 +220,25 @@
         window.onload = startEffects;
 
         document.addEventListener("DOMContentLoaded", () => {
-        let music = document.getElementById("bg-music");
-        
-        // Retrieve last known time position
-        let lastTime = localStorage.getItem("musicTime");
+            let music = document.getElementById("bg-music");
+            
+            let lastTime = localStorage.getItem("musicTime");
 
-        if (lastTime) {
-            music.currentTime = lastTime;  // Resume music from last saved time
-        }
+            if (lastTime) {
+                music.currentTime = lastTime;
+            }
 
-        let playPromise = music.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                console.log("Autoplay blocked. Waiting for user interaction...");
-                document.addEventListener("click", () => music.play(), { once: true });
-            });
-        }
+            let playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    document.addEventListener("click", () => music.play(), { once: true });
+                });
+            }
 
-        // Save the current time periodically
-        setInterval(() => {
-            localStorage.setItem("musicTime", music.currentTime);
-        }, 1000);
-    });
+            setInterval(() => {
+                localStorage.setItem("musicTime", music.currentTime);
+            }, 1000);
+        });
     </script>
-
 </body>
 </html>
