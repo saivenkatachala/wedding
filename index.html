@@ -6,76 +6,10 @@
     <link rel="icon" href="h2.png">
     <title>Sasi & Pooja's Wedding Moments 💖</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-    /* Floating Contact Button */
-/* Contact Section */
-
-
-/* Message */
-.contact-message {
-    font-size: 1.3rem;
-    color: #415a77; /* Gold color */
-    margin-bottom: 15px;
-}
-
-/* Contact Button */
-.contact-btn {
-    display: inline-block;
-    background: #ffcc00;
-    color: #222;
-    font-size: 1.2rem;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
-    transition: 0.3s ease-in-out;
-}
-
-.contact-btn:hover {
-    background: #ff9900;
-    transform: scale(1.1);
-    box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
-}
-
-
-/* Footer */
-footer {
-    background-color: #fb6f92;
-    color: #ffebcd; /* Brighter text */
-    text-align: center;
-    padding: 20px 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* Developer Message */
-footer .developer-message {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: #457b9d; /* Slightly lighter */
-}
-
-/* Social Links */
-footer .social-links a {
-    color: #ffd700; /* Brighter gold color */
-    margin: 0 10px;
-    font-size: 24px;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-    display: inline-block;
-}
-
-/* 3D Rising Effect */
-footer .social-links a:hover {
-    color: #fff;
-    transform: translateY(-5px) scale(1.2);
-    text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9); /* Brighter glow */
-}
-
-
-/* Main */
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -116,6 +50,7 @@ footer .social-links a:hover {
             background: #e63946;
         }
 
+        /* Moments Section */
         .moments {
             display: flex;
             flex-wrap: wrap;
@@ -153,6 +88,7 @@ footer .social-links a:hover {
             padding: 10px;
         }
 
+        /* Floating Elements */
         .floating {
             position: fixed;
             top: -50px;
@@ -164,61 +100,160 @@ footer .social-links a:hover {
             animation: fall linear infinite;
             pointer-events: none;
         }
-
         @keyframes fall {
             0% { transform: translateY(0) scale(0.8); opacity: 1; }
             100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
         }
 
+        /* Contact Section */
+        .contact-section {
+            margin: 20px 0;
+        }
+        .contact-message {
+            font-size: 1.3rem;
+            color: #415a77;
+            margin-bottom: 15px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: #ffcc00;
+            color: #222;
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
+            transition: 0.3s ease-in-out;
+        }
+        .contact-btn:hover {
+            background: #ff9900;
+            transform: scale(1.1);
+            box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #fb6f92;
+            color: #ffebcd;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        footer .developer-message {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #457b9d;
+        }
+        footer .social-links a {
+            color: #ffd700;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            display: inline-block;
+        }
+        footer .social-links a:hover {
+            color: #fff;
+            transform: translateY(-5px) scale(1.2);
+            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             p { font-size: 1rem; }
+            .floating { display: none; } /* Hide floating elements on small screens */
         }
+
+
+
+        .language-switch {
+            margin-top: 20px;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #d6336c;
+        }
+        
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <span><label for="language-select">🌍 Select Your Language:</label></span>
+        <select id="language-select" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+        </select>
+    </div>
 
-    <h1>Welcome to Sasi & Pooja's Wedding Memories 💖</h1>
-    <p>"A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!"</p>
+    <!-- Main Content -->
+    <h1 id="welcome-text">Welcome to Sasi & Pooja's Wedding Memories 💖</h1>
+    <p id="description-text">"A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!"</p>
 
     <div class="buttons">
-        <a href="functions.html">View Wedding Functions</a>
+        <a href="functions.html" id="wedding-functions">View Wedding Functions</a>
     </div>
 
-    <h2 style="margin-top: 30px; color: #d6336c;">✨ Cherished Moments ✨</h2>
+    <h2 style="margin-top: 30px; color: #d6336c;" id="cherished-moments">✨ Cherished Moments ✨</h2>
     <div class="moments">
-        <div class="moment" onclick="location.href='eng.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Engagement</div></div>
-        <div class="moment" onclick="location.href='mehendi.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Mehendi Ceremony</div></div>
-        <div class="moment" onclick="location.href='haldi.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Haldi Ceremony</div></div>
-        <div class="moment" onclick="location.href='sangeet.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">Sangeet Night</div></div>
-        <div class="moment" onclick="location.href='wedding.html'"><img src="e1.jpg" loading="lazy"><div class="moment-text">The Wedding</div></div>
+        <div class="moment" onclick="location.href='eng.html'">
+            <img src="e1.jpg" loading="lazy" alt="Engagement Ceremony">
+            <div class="moment-text" id="moment-engagement">Engagement</div>
+        </div>
+        <div class="moment" onclick="location.href='mehendi.html'">
+            <img src="e1.jpg" loading="lazy" alt="Mehendi Ceremony">
+            <div class="moment-text" id="moment-mehendi">Mehendi Ceremony</div>
+        </div>
+        <div class="moment" onclick="location.href='haldi.html'">
+            <img src="e1.jpg" loading="lazy" alt="Haldi Ceremony">
+            <div class="moment-text" id="moment-haldi">Haldi Ceremony</div>
+        </div>
+        <div class="moment" onclick="location.href='sangeet.html'">
+            <img src="e1.jpg" loading="lazy" alt="Sangeet Night">
+            <div class="moment-text" id="moment-sangeet">Sangeet Night</div>
+        </div>
+        <div class="moment" onclick="location.href='wedding.html'">
+            <img src="e1.jpg" loading="lazy" alt="The Wedding">
+            <div class="moment-text" id="moment-wedding">The Wedding</div>
+        </div>
     </div>
+
+    <!-- Audio -->
     <audio id="bg-music" loop>
         <source src="ad1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <!-- Contact Button -->
+    <!-- <button onclick="playMusic()" style="padding: 10px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Background Music
+    </button> -->
+
+    <!-- Contact Section -->
     <div class="contact-section">
-        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
-        <a href="con1.html" class="contact-btn">Contact Us</a>
+        <p class="contact-message" id="contact-message">For any queries or suggestions, feel free to contact us!</p>
+        <a href="con1.html" class="contact-btn" id="contact-us">Contact Us</a>
     </div>
 
-<!-- Footer -->
-<footer>
-    <div class="footer-container">
-        <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
-        <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
-        <div class="social-links">
-            <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
-            <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p id="footer-text">&copy; 2025 SAI VENKAT. All rights reserved.</p>
+            <p class="developer-message" id="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
+            <div class="social-links">
+                <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-briefcase"></i></a>
+                <a href="https://github.com/saivenkatachala" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/its_saivenkat/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-    </div>
-</footer>
-
+    </footer>
 
     <script>
+        // Floating Elements
         let maxFloatingElements = 20;
         let floatingElements = [];
 
@@ -254,31 +289,75 @@ footer .social-links a:hover {
 
         window.onload = startEffects;
 
-
-        document.addEventListener("DOMContentLoaded", () => {
-        let music = document.getElementById("bg-music");
-        
-        // Retrieve last known time position
-        let lastTime = localStorage.getItem("musicTime");
-
-        if (lastTime) {
-            music.currentTime = lastTime;  // Resume music from last saved time
+        // Audio Play Function
+        function playMusic() {
+            let music = document.getElementById("bg-music");
+            let playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    console.log("Autoplay blocked. Waiting for user interaction...");
+                });
+            }
         }
 
-        let playPromise = music.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                console.log("Autoplay blocked. Waiting for user interaction...");
-                document.addEventListener("click", () => music.play(), { once: true });
-            });
-        }
+        // Language Switcher
+        const translations = {
+            en: {
+                "welcome-text": "Welcome to Sasi & Pooja's Wedding Memories 💖",
+                "description-text": "A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!",
+                "wedding-functions": "View Wedding Functions",
+                "cherished-moments": "✨ Cherished Moments ✨",
+                "moment-engagement": "Engagement",
+                "moment-mehendi": "Mehendi Ceremony",
+                "moment-haldi": "Haldi Ceremony",
+                "moment-sangeet": "Sangeet Night",
+                "moment-wedding": "The Wedding",
+                "contact-message": "For any queries or suggestions, feel free to contact us!",
+                "contact-us": "Contact Us",
+                "footer-text": "&copy; 2025 SAI VENKAT. All rights reserved.",
+                "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
+            },
+            te: {
+                "welcome-text": "ససి & పూజ వివాహ జ్ఞాపకాలకు స్వాగతం 💖",
+                "description-text": "ప్రేమ, నవ్వు మరియు శాశ్వత ఆనంద ప్రయాణం. మా వివాహ వేడుకల నుండి అమూల్యమైన క్షణాలను మళ్లీ ఆస్వాదించండి!",
+                "wedding-functions": "వివాహ వేడుకలను చూడండి",
+                "cherished-moments": "✨ మధుర జ్ఞాపకాలు ✨",
+                "moment-engagement": "నిశ్చితార్థం",
+                "moment-mehendi": "మెహెందీ వేడుక",
+                "moment-haldi": "హల్దీ వేడుక",
+                "moment-sangeet": "సంగీత రాత్రి",
+                "moment-wedding": "వివాహం",
+                "contact-message": "ఏదైనా ప్రశ్నలు లేదా సూచనల కోసం, మమ్మల్ని సంప్రదించండి!",
+                "contact-us": "మమ్మల్ని సంప్రదించండి",
+                "footer-text": "&copy; 2025 సాయి వెంకట్. అన్ని హక్కులు అనుసంధించబడ్డాయి.",
+                "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
+            },
+            hi: {
+                "welcome-text": "ससी और पूजा की शादी की यादों में आपका स्वागत है 💖",
+                "description-text": "प्रेम, हंसी और सुखद जीवन की यात्रा। हमारी शादी की खूबसूरत यादों को फिर से जीएं!",
+                "wedding-functions": "शादी समारोह देखें",
+                "cherished-moments": "✨ प्रिय क्षण ✨",
+                "moment-engagement": "सगाई",
+                "moment-mehendi": "मेहंदी समारोह",
+                "moment-haldi": "हल्दी समारोह",
+                "moment-sangeet": "संगीत रात",
+                "moment-wedding": "शादी",
+                "contact-message": "किसी भी प्रश्न या सुझाव के लिए, हमसे संपर्क करें!",
+                "contact-us": "संपर्क करें",
+                "footer-text": "&copy; 2025 साई वेंकट. सर्वाधिकार सुरक्षित.",
+                "developer-message": "💖 के साथ डिज़ाइन और विकसित: साई वेंकट"
+            }
+        };
 
-        // Save the current time periodically
-        setInterval(() => {
-            localStorage.setItem("musicTime", music.currentTime);
-        }, 1000);
-    });
+        function switchLanguage() {
+            let lang = document.getElementById("language-select").value;
+            for (let key in translations[lang]) {
+                let element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = translations[lang][key];
+                }
+            }
+        }
     </script>
-
 </body>
 </html>
