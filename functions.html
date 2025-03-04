@@ -23,7 +23,7 @@
             text-align: center;
             font-family: 'Times New Roman', serif;
             background: #f8f1f1;
-            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow: hidden;
         }
 
         .content {
@@ -33,13 +33,11 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 20px;
         }
 
         h1 {
             color: #d6336c;
             margin-top: 20px;
-            font-size: 2.5rem;
         }
 
         .function-list {
@@ -48,7 +46,6 @@
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
-            max-width: 1200px;
         }
 
         .function-card {
@@ -59,12 +56,10 @@
             cursor: pointer;
             transition: 0.3s;
             font-size: 1.2rem;
-            text-align: center;
         }
 
         .function-card:hover {
             background: #ff92a1;
-            transform: translateY(-5px);
         }
 
         .back-btn {
@@ -86,54 +81,36 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Footer Styles */
-footer {
-    background-color: #fb6f92;
-    color: #ffebcd;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: auto;
-    width: 100%;
-}
+        footer {
+            background-color: #fb6f92;
+            color: #ffebcd;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: auto;
+            width: 100%;
+        }
 
-footer .developer-message {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: #457b9d;
-}
+        footer .developer-message {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #457b9d;
+        }
 
-footer .social-links a {
-    color: #ffd700;
-    margin: 0 10px;
-    font-size: 24px;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-    display: inline-block;
-}
+        footer .social-links a {
+            color: #ffd700;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            display: inline-block;
+        }
 
-footer .social-links a:hover {
-    color: #fff;
-    transform: translateY(-5px) scale(1.2);
-    text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
-}
-
-/* Responsive Design for Footer */
-@media (max-width: 768px) {
-    footer {
-        font-size: 0.9rem; /* Smaller font size for mobile */
-        padding: 15px 0; /* Adjust padding for mobile */
-    }
-
-    footer .developer-message {
-        font-size: 0.9rem; /* Smaller font size for developer message */
-    }
-
-    footer .social-links a {
-        font-size: 20px; /* Smaller icon size for mobile */
-        margin: 0 8px; /* Adjust margin for mobile */
-    }
-}
+        footer .social-links a:hover {
+            color: #fff;
+            transform: translateY(-5px) scale(1.2);
+            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
+        }
 
         .floating {
             position: fixed;
@@ -144,7 +121,6 @@ footer .social-links a:hover {
             background-repeat: no-repeat;
             opacity: 0.8;
             animation: fall linear infinite;
-            pointer-events: none; /* Prevent floating elements from blocking clicks */
         }
 
         @keyframes fall {
@@ -176,50 +152,48 @@ footer .social-links a:hover {
             box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .function-card {
-                width: 100%;
-                max-width: 300px;
-                font-size: 1rem;
-            }
-
-            .back-btn {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-
-            .contact-message {
-                font-size: 1.1rem;
-            }
-
-            .contact-btn {
-                font-size: 1rem;
-                padding: 10px 15px;
-            }
+        /* Language Switcher */
+        .language-switch {
+            margin-top: 20px;
+        }
+        .language-switch select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #d6336c;
+            background: #fff;
+            color: #d6336c;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <div class="content">
-        <h1>Our Wedding Functions 🎉</h1>
-        <div class="function-list">
-            <div class="function-card" onclick="location.href='eng.html'">💍 Engagement</div>
-            <div class="function-card" onclick="location.href='mehendi.html'">🌿 Mehendi Ceremony</div>
-            <div class="function-card" onclick="location.href='haldi.html'">🌞 Haldi Ceremony</div>
-            <div class="function-card" onclick="location.href='sangeet.html'">🎶 Sangeet Night</div>
-            <div class="function-card" onclick="location.href='wedding.html'">💎 Wedding Day</div>
-        </div>
-        <button class="back-btn" onclick="goBack()">⬅ Back to Moments</button>
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <label for="language-select">🌍 Select Language:</label>
+        <select id="language-select" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+        </select>
     </div>
+
+    <div class="content">
+        <h1 id="welcome-text">Our Wedding Functions 🎉</h1>
+        <div class="function-list">
+            <div class="function-card" onclick="location.href='eng.html'" id="engagement">💍 Engagement</div>
+            <div class="function-card" onclick="location.href='mehendi.html'" id="mehendi">🌿 Mehendi Ceremony</div>
+            <div class="function-card" onclick="location.href='haldi.html'" id="haldi">🌞 Haldi Ceremony</div>
+            <div class="function-card" onclick="location.href='sangeet.html'" id="sangeet">🎶 Sangeet Night</div>
+            <div class="function-card" onclick="location.href='wedding.html'" id="wedding">💎 Wedding Day</div>
+        </div>
+        <button class="back-btn" onclick="goBack()" id="back-btn">⬅ Back to Moments</button>
+    </div>
+
     <div class="contact-section">
-        <p class="contact-message">For any queries or suggestions, feel free to contact us!</p>
-        <a href="con1.html" class="contact-btn">Contact Us</a>
+        <p class="contact-message" id="contact-message">For any queries or suggestions, feel free to contact us!</p>
+        <a href="con1.html" class="contact-btn" id="contact-us">Contact Us</a>
     </div>
 
     <audio id="bg-music" loop>
@@ -229,8 +203,8 @@ footer .social-links a:hover {
 
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
-            <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
+            <p id="footer-text">&copy; 2025 SAI VENKAT. All rights reserved.</p>
+            <p class="developer-message" id="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
             <div class="social-links">
                 <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
                 <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
@@ -241,15 +215,70 @@ footer .social-links a:hover {
     </footer>
 
     <script>
-        function goBack() {
-            window.location.href = "index.html"; 
+        // Language Switcher
+        const translations = {
+            en: {
+                "welcome-text": "Our Wedding Functions 🎉",
+                "engagement": "💍 Engagement",
+                "mehendi": "🌿 Mehendi Ceremony",
+                "haldi": "🌞 Haldi Ceremony",
+                "sangeet": "🎶 Sangeet Night",
+                "wedding": "💎 Wedding Day",
+                "back-btn": "⬅ Back to Moments",
+                "contact-message": "For any queries or suggestions, feel free to contact us!",
+                "contact-us": "Contact Us",
+                "footer-text": "&copy; 2025 SAI VENKAT. All rights reserved.",
+                "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
+            },
+            te: {
+                "welcome-text": "మా వివాహ వేడుకలు 🎉",
+                "engagement": "💍 నిశ్చితార్థం",
+                "mehendi": "🌿 మెహెందీ వేడుక",
+                "haldi": "🌞 హల్దీ వేడుక",
+                "sangeet": "🎶 సంగీత రాత్రి",
+                "wedding": "💎 వివాహం",
+                "back-btn": "⬅ జ్ఞాపకాలకు తిరిగి వెళ్ళండి",
+                "contact-message": "ఏదైనా ప్రశ్నలు లేదా సూచనల కోసం, మమ్మల్ని సంప్రదించండి!",
+                "contact-us": "మమ్మల్ని సంప్రదించండి",
+                "footer-text": "&copy; 2025 సాయి వెంకట్. అన్ని హక్కులు అనుసంధించబడ్డాయి.",
+                "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
+            },
+            hi: {
+                "welcome-text": "हमारे शादी के कार्यक्रम 🎉",
+                "engagement": "💍 सगाई",
+                "mehendi": "🌿 मेहंदी समारोह",
+                "haldi": "🌞 हल्दी समारोह",
+                "sangeet": "🎶 संगीत रात",
+                "wedding": "💎 शादी",
+                "back-btn": "⬅ यादों पर वापस जाएं",
+                "contact-message": "किसी भी प्रश्न या सुझाव के लिए, हमसे संपर्क करें!",
+                "contact-us": "संपर्क करें",
+                "footer-text": "&copy; 2025 साई वेंकट. सर्वाधिकार सुरक्षित.",
+                "developer-message": "💖 के साथ डिज़ाइन और विकसित: साई वेंकट"
+            }
+        };
+
+        function switchLanguage() {
+            const lang = document.getElementById("language-select").value;
+            for (const key in translations[lang]) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = translations[lang][key];
+                }
+            }
         }
 
+        // Other Functions
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        // Floating Elements (Optimized)
         function createFloatingElement(imageSrc) {
             let element = document.createElement("div");
             element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
-            element.style.animationDuration = (5 + Math.random() * 5) + "s"; 
+            element.style.animationDuration = (5 + Math.random() * 5) + "s";
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
             setTimeout(() => document.body.removeChild(element), 10000);
@@ -264,9 +293,10 @@ footer .social-links a:hover {
 
         window.onload = startEffects;
 
+        window.onload = startEffects;
+
         document.addEventListener("DOMContentLoaded", () => {
             let music = document.getElementById("bg-music");
-            
             let lastTime = localStorage.getItem("musicTime");
 
             if (lastTime) {
