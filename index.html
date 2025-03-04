@@ -290,15 +290,25 @@
         window.onload = startEffects;
 
         // Audio Play Function
-        function playMusic() {
+        document.addEventListener("DOMContentLoaded", () => {
             let music = document.getElementById("bg-music");
+            let lastTime = localStorage.getItem("musicTime");
+
+            if (lastTime) {
+                music.currentTime = lastTime;
+            }
+
             let playPromise = music.play();
             if (playPromise !== undefined) {
                 playPromise.catch(() => {
-                    console.log("Autoplay blocked. Waiting for user interaction...");
+                    document.addEventListener("click", () => music.play(), { once: true });
                 });
             }
-        }
+
+            setInterval(() => {
+                localStorage.setItem("musicTime", music.currentTime);
+            }, 1000);
+        });
 
         // Language Switcher
         const translations = {
