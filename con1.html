@@ -6,238 +6,308 @@
     <link rel="icon" href="cont.png">
     <title>Contact</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<style>
-    /* Footer */
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        body {
+            background-color: #f5ebe0;
+            text-align: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #d6336c;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            margin: 10px auto;
+            width: 90%;
+        }
+        .contact-section {
+            padding: 50px 20px;
+            border-radius: 10px;
+        }
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        #contact-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+            font-size: 1.2rem;
+        }
+        #contact-form button:hover {
+            background-color: #e63946;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+        .back-home:hover {
+            background-color: #e63946;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 2rem;
+            color: #d6336c;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: #ff6b6b;
+        }
+         /* Footer */
+        /* Footer */
 footer {
     background-color: #fb6f92;
-    color: #ffebcd; /* Brighter text */
+    color: #ffebcd;
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
     font-size: 1.1rem;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Developer Message */
-footer .developer-message {
+.footer-container {
+    width: 90%;
+    max-width: 800px;
+}
+
+.footer-container p {
+    margin: 5px 0;
+}
+
+.developer-message {
     font-style: italic;
     font-size: 1.1rem;
-    color: #457b9d; /* Slightly lighter */
+    color: #457b9d;
 }
 
-/* Social Links */
-footer .social-links a {
-    color: #ffd700; /* Brighter gold color */
-    margin: 0 10px;
-    font-size: 24px;
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: #ffd700;
+    margin: 0 15px;
+    font-size: 26px;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
     display: inline-block;
 }
 
-/* 3D Rising Effect */
-footer .social-links a:hover {
+.social-links a:hover {
     color: #fff;
     transform: translateY(-5px) scale(1.2);
-    text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9); /* Brighter glow */
+    text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
 }
 
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-section {
-    flex: 1;
-}
-
-footer {
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Times New Roman', serif;
-    }
-    body {
-        background-color: #f5ebe0;
-        text-align: center;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-    h2 {
-        font-size: 2.5rem;
-        color: #d6336c;
-        margin-top: 20px;
-    }
-    p {
-        font-size: 1.2rem;
-        color: #444;
-        margin: 10px auto;
-        width: 90%;
-    }
-    .contact-section {
-        padding: 50px 20px;
-        border-radius: 10px;
-    }
-    #contact-form {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }
-    .form-group label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
-    .form-group input, .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #555;
-        border-radius: 5px;
-        background-color: #f8f9fa;
-        color: #000;
-    }
-    #contact-form button {
-        width: 100%;
-        padding: 12px;
-        background-color: #ff6b6b;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-        color: white;
-        font-size: 1.2rem;
-    }
-    #contact-form button:hover {
-        background-color: #e63946;
-    }
-    .back-home {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 12px 20px;
-        background-color: #ff6b6b;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: 0.3s;
-        font-size: 1.2rem;
-    }
-    .back-home:hover {
-        background-color: #e63946;
-    }
-    .social-links {
-        margin-top: 20px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 10px;
     }
     .social-links a {
-        display: inline-block;
+        font-size: 22px;
         margin: 0 10px;
-        font-size: 2rem;
-        color: #d6336c;
-        transition: 0.3s;
     }
-    .social-links a:hover {
-        color: #ff6b6b;
-    }
-    .footer {
-        margin-top: 50px;
-        padding: 20px;
-        background-color: #d6336c;
-        color: white;
-        text-align: center;
-        font-size: 1rem;
-    }
-    @media (max-width: 768px) {
-        h2 { font-size: 2rem; }
-        p { font-size: 1rem; }
-    }
-</style>
+}
+
+
+
+        /* Language Switcher */
+        .language-switch {
+            margin-top: 20px;
+        }
+        .language-switch select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #d6336c;
+            background: #fff;
+            color: #d6336c;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <label for="language-select">🌍 Select Language:</label>
+        <select id="language-select" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+        </select>
+    </div>
+
     <section class="contact-section">
         <div class="container">
-            <h2>Contact Me</h2>
+            <h2 id="contact-heading">Contact Me</h2>
             <form id="contact-form">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name" id="name-label">Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" id="email-label">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
+                    <label for="message" id="message-label">Message</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit" id="submit-button">Send Message</button>
             </form>
             <div id="form-response" class="form-response"></div>
-           
-            <a href="index.html" class="back-home">Back to Home</a>
+            <a href="index.html" class="back-home" id="back-home">Back to Home</a>
         </div>
     </section>
+
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 SAI VENKAT. All rights reserved.</p>
-            <p class="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
+            <p id="footer-text">&copy; 2025 SAI VENKAT. All rights reserved.</p>
+            <p class="developer-message" id="developer-message">Designed & Developed with 💖 by SAI VENKAT</p>
             <div class="social-links">
-                <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank"><i class="fa-solid fa-briefcase"></i></a>
-                <a href="https://github.com/saivenkatachala" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/its_saivenkat/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://saivenkatachala.github.io/SAIVENKAT/" target="_blank" aria-label="Portfolio"><i class="fa-solid fa-briefcase"></i></a>
+                <a href="https://github.com/saivenkatachala" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/a-sai-venkat-509239226/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/its_saivenkat/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
+
     <script>
+        // Language Switcher
+        const translations = {
+            en: {
+                "contact-heading": "Contact Me",
+                "name-label": "Name",
+                "email-label": "Email",
+                "message-label": "Message",
+                "submit-button": "Send Message",
+                "back-home": "Back to Home",
+                "footer-text": "&copy; 2025 SAI VENKAT. All rights reserved.",
+                "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
+            },
+            te: {
+                "contact-heading": "నన్ను సంప్రదించండి",
+                "name-label": "పేరు",
+                "email-label": "ఇమెయిల్",
+                "message-label": "సందేశం",
+                "submit-button": "సందేశం పంపండి",
+                "back-home": "హోమ్‌కు తిరిగి వెళ్ళండి",
+                "footer-text": "&copy; 2025 సాయి వెంకట్. అన్ని హక్కులు అనుసంధించబడ్డాయి.",
+                "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
+            },
+            hi: {
+                "contact-heading": "मुझसे संपर्क करें",
+                "name-label": "नाम",
+                "email-label": "ईमेल",
+                "message-label": "संदेश",
+                "submit-button": "संदेश भेजें",
+                "back-home": "होम पर वापस जाएं",
+                "footer-text": "&copy; 2025 साई वेंकट. सर्वाधिकार सुरक्षित.",
+                "developer-message": "💖 के साथ डिज़ाइन और विकसित: साई वेंकट"
+            }
+        };
+
+        function switchLanguage() {
+            const lang = document.getElementById("language-select").value;
+            for (const key in translations[lang]) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = translations[lang][key];
+                }
+            }
+        }
+
+        // Form Submission
         const contactForm = document.getElementById('contact-form');
-const formResponse = document.getElementById('form-response');
+        const formResponse = document.getElementById('form-response');
 
-contactForm.addEventListener('submit', function (e) {
-  e.preventDefault();
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-  const formData = new FormData();
-  formData.append('name', document.getElementById('name').value);
-  formData.append('email', document.getElementById('email').value);
-  formData.append('message', document.getElementById('message').value);
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('message', document.getElementById('message').value);
 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxNX3xFOudjD-7R1dkYCTwd_RbaSHV-H7HNy1O5a2odFxo9b3STcu7DvMKCfpo4iJfW/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxNX3xFOudjD-7R1dkYCTwd_RbaSHV-H7HNy1O5a2odFxo9b3STcu7DvMKCfpo4iJfW/exec';
 
-  formResponse.textContent = 'Sending message...';
-  formResponse.style.color = '#00bcd4';
+            formResponse.textContent = 'Sending message...';
+            formResponse.style.color = '#00bcd4';
 
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData, // Using FormData instead of JSON
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        formResponse.textContent = data.message || 'Message sent successfully!Thank you for contacting😇';
-        formResponse.style.color = '#4caf50';
-        contactForm.reset();
-      } else {
-        formResponse.textContent = data.message || 'Error sending message. Please try again.';
-        formResponse.style.color = '#f44336';
-      }
-    })
-    .catch(error => {
-      formResponse.textContent = 'Error sending message. Please try again.';
-      formResponse.style.color = '#f44336';
-      console.error('Error:', error);
-    });
-});
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        formResponse.textContent = data.message || 'Message sent successfully! Thank you for contacting😇';
+                        formResponse.style.color = '#4caf50';
+                        contactForm.reset();
+                    } else {
+                        formResponse.textContent = data.message || 'Error sending message. Please try again.';
+                        formResponse.style.color = '#f44336';
+                    }
+                })
+                .catch(error => {
+                    formResponse.textContent = 'Error sending message. Please try again.';
+                    formResponse.style.color = '#f44336';
+                    console.error('Error:', error);
+                });
+        });
     </script>
 </body>
 </html>
