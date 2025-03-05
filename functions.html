@@ -15,39 +15,46 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+    
         html, body {
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
+            width: 100%;
             font-family: 'Times New Roman', serif;
             background: #f8f1f1;
-            overflow: hidden;
+            text-align: center;
+            overflow-x: hidden; /* Prevents horizontal scroll */
         }
-
+    
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures full height */
+        }
+    
         .content {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
+            padding: 20px;
         }
-
+    
         h1 {
             color: #d6336c;
             margin-top: 20px;
+            font-size: 2rem;
         }
-
+    
         .function-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
+            max-width: 100%;
         }
-
+    
         .function-card {
             width: 250px;
             padding: 15px;
@@ -56,12 +63,13 @@
             cursor: pointer;
             transition: 0.3s;
             font-size: 1.2rem;
+            text-align: center;
         }
-
+    
         .function-card:hover {
             background: #ff92a1;
         }
-
+    
         .back-btn {
             margin-top: 30px;
             padding: 12px 25px;
@@ -75,65 +83,23 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease-in-out;
         }
-
+    
         .back-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
-
-        footer {
-            background-color: #fb6f92;
-            color: #ffebcd;
+    
+        .contact-section {
             text-align: center;
-            padding: 20px 0;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: auto;
-            width: 100%;
+            margin-top: 20px;
         }
-
-        footer .developer-message {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #457b9d;
-        }
-
-        footer .social-links a {
-            color: #ffd700;
-            margin: 0 10px;
-            font-size: 24px;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-            display: inline-block;
-        }
-
-        footer .social-links a:hover {
-            color: #fff;
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
-        }
-
-        .floating {
-            position: fixed;
-            top: -50px;
-            width: 30px;
-            height: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(0) scale(0.8); opacity: 1; }
-            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
-        }
-
+    
         .contact-message {
             font-size: 1.3rem;
             color: #415a77;
             margin-bottom: 15px;
         }
-
+    
         .contact-btn {
             display: inline-block;
             background: #ffcc00;
@@ -145,18 +111,50 @@
             box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.7);
             transition: 0.3s ease-in-out;
         }
-
+    
         .contact-btn:hover {
             background: #ff9900;
             transform: scale(1.1);
             box-shadow: 0px 5px 25px rgba(255, 153, 0, 1);
         }
-
+    
+        footer {
+            background-color: #fb6f92;
+            color: #ffebcd;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: auto;
+            width: 100%;
+        }
+    
+        footer .developer-message {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #457b9d;
+        }
+    
+        footer .social-links a {
+            color: #ffd700;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            display: inline-block;
+        }
+    
+        footer .social-links a:hover {
+            color: #fff;
+            transform: translateY(-5px) scale(1.2);
+            text-shadow: 0px 5px 20px rgba(255, 255, 255, 0.9);
+        }
+    
         /* Language Switcher */
         .language-switch {
             margin-top: 20px;
             text-align: center;
         }
+    
         .language-switch select {
             padding: 8px;
             font-size: 16px;
@@ -166,7 +164,50 @@
             color: #d6336c;
             cursor: pointer;
         }
+    
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem; /* Reduced size for mobile */
+            }
+    
+            .function-list {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .function-card {
+                width: 90%;
+                font-size: 1rem; /* Reduced text size */
+                padding: 12px;
+            }
+    
+            .contact-message {
+                font-size: 1rem; /* Smaller text */
+            }
+    
+            .contact-btn {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+    
+            .back-btn {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+    
+            footer {
+                font-size: 0.9rem;
+                padding: 15px 0;
+            }
+    
+            footer .social-links a {
+                font-size: 18px;
+            }
+        }
     </style>
+    
+    
 </head>
 <body>
 
@@ -318,3 +359,5 @@
     </script>
 </body>
 </html>
+
+
