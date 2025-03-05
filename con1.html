@@ -313,7 +313,7 @@ body {
 <body>
     <!-- Language Switcher -->
     <div class="language-switch">
-        <label for="language-select">🌍 Select Language:</label>
+        <label for="language-select" id = "lang">🌍 Select Your Language:</label>
         <select id="language-select" onchange="switchLanguage()">
             <option value="en">English</option>
             <option value="te">తెలుగు (Telugu)</option>
@@ -361,6 +361,7 @@ body {
         // Language Switcher
         const translations = {
             en: {
+                "lang":"🌍 Select Your Language :",
                 "contact-heading": "Contact Me",
                 "name-label": "Name",
                 "email-label": "Email",
@@ -371,6 +372,7 @@ body {
                 "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
             },
             te: {
+                "lang":"🌍 భాషను ఎంచుకోండి :",
                 "contact-heading": "నన్ను సంప్రదించండి",
                 "name-label": "పేరు",
                 "email-label": "ఇమెయిల్",
@@ -381,6 +383,7 @@ body {
                 "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
             },
             hi: {
+                "lang":"🌍 अपनी भाषा चुनें :",
                 "contact-heading": "मुझसे संपर्क करें",
                 "name-label": "नाम",
                 "email-label": "ईमेल",
