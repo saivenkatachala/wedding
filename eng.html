@@ -95,25 +95,35 @@
       background: #ddd;
     }
 
+    /* Navigation Buttons */
     .nav-buttons {
-      margin-top: 10px;
+      position: absolute;
+      top: 50%;
+      width: 100%;
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px; /* Add padding to prevent buttons from touching the edges */
     }
 
     .nav-buttons button {
-      padding: 12px;
-      font-size: 1.2rem;
+      padding: 15px;
+      font-size: 1.5rem;
       border: none;
       border-radius: 50%;
       cursor: pointer;
-      background: #fff;
-      transition: background 0.2s ease;
+      background: rgba(255, 255, 255, 0.8);
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
     }
 
     .nav-buttons button:hover {
-      background: #ddd;
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.1);
     }
 
     .close-btn {
@@ -155,8 +165,7 @@
     <!-- Gallery images will be injected here -->
   </div>
 
-
-   <!-- Back to functions button -->
+  <!-- Back to functions button -->
   <div style="margin-top: 30px; text-align: center;">
     <button onclick="goBack()" style="
       padding: 12px 25px;
@@ -174,10 +183,7 @@
     onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
       ⬅ Back to Functions
     </button>
-
-
-
-
+  </div>
 
   <!-- Modal for Full-Screen Image View -->
   <div class="modal" id="modal">
@@ -193,7 +199,6 @@
       <button onclick="downloadImage()">Download</button>
       <button onclick="copyImage()">Copy</button>
     </div>
-    </div>
   </div>
 
   <script>
@@ -203,8 +208,6 @@
       "1lA6b9chPzpx6E1TGzU1_kS2XwzxvGZ7o",
       "1bFnZjd5mptFSmLUJucOcjLDKLOm_hzkG",
       "1XXsqVQjau6-THaocv4XAalPleXCisfbj",
-      
-      
     ];
     const apiKey = "AIzaSyDgn638KyxLmH-ja8fvQXZBqxJKqAIrV0U";
 
@@ -277,15 +280,27 @@
     }
 
     function copyImage() {
-  const fileId = images[currentIndex].id;
-  const imageUrl = `https://lh3.googleusercontent.com/d/${fileId}=s2000`;
+      const fileId = images[currentIndex].id;
+      const imageUrl = `https://lh3.googleusercontent.com/d/${fileId}=s2000`;
 
-  navigator.clipboard.writeText(imageUrl).then(() => {
-    alert("Image URL copied to clipboard!");
-  }).catch(err => {
-    alert("Failed to copy image URL: " + err);
-  });
-}
+      navigator.clipboard.writeText(imageUrl).then(() => {
+        alert("Image URL copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy image URL: " + err);
+      });
+    }
+
+    // Add keyboard event listeners for arrow key navigation
+    document.addEventListener("keydown", (event) => {
+      const modal = document.getElementById("modal");
+      if (modal.style.display === "flex") {
+        if (event.key === "ArrowLeft") {
+          prevImage();
+        } else if (event.key === "ArrowRight") {
+          nextImage();
+        }
+      }
+    });
 
     window.onclick = function(event) {
       const modal = document.getElementById("modal");
