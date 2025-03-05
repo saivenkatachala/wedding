@@ -187,7 +187,7 @@
 <body>
     <!-- Language Switcher -->
     <div class="language-switch">
-        <span><label for="language-select">🌍 Select Your Language:</label></span>
+        <label for="language-select" id = "lang">🌍 Select Your Language:</label>
         <select id="language-select" onchange="switchLanguage()">
             <option value="en">English</option>
             <option value="te">తెలుగు (Telugu)</option>
@@ -317,6 +317,7 @@
         // Language Switcher
         const translations = {
             en: {
+                "lang":"🌍 Select Your Language :",
                 "welcome-text": "Welcome to Sasi & Pooja's Wedding Memories 💖",
                 "description-text": "A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!",
                 "wedding-functions": "View Wedding Functions",
@@ -332,6 +333,7 @@
                 "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
             },
             te: {
+                 "lang":"🌍 భాషను ఎంచుకోండి :",
                 "welcome-text": "ససి & పూజ వివాహ జ్ఞాపకాలకు స్వాగతం 💖",
                 "description-text": "ప్రేమ, నవ్వు మరియు శాశ్వత ఆనంద ప్రయాణం. మా వివాహ వేడుకల నుండి అమూల్యమైన క్షణాలను మళ్లీ ఆస్వాదించండి!",
                 "wedding-functions": "వివాహ వేడుకలను చూడండి",
@@ -347,6 +349,7 @@
                 "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
             },
             hi: {
+                "lang":"🌍 अपनी भाषा चुनें :",
                 "welcome-text": "ससी और पूजा की शादी की यादों में आपका स्वागत है 💖",
                 "description-text": "प्रेम, हंसी और सुखद जीवन की यात्रा। हमारी शादी की खूबसूरत यादों को फिर से जीएं!",
                 "wedding-functions": "शादी समारोह देखें",
