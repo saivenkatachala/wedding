@@ -232,7 +232,7 @@
 
     <!-- Language Switcher -->
     <div class="language-switch">
-        <label for="language-select">🌍 Select Your Language:</label>
+        <label for="language-select" id = "lang">🌍 Select Your Language:</label>
         <select id="language-select" onchange="switchLanguage()">
             <option value="en">English</option>
             <option value="te">తెలుగు (Telugu)</option>
@@ -279,6 +279,7 @@
         // Language Switcher
         const translations = {
             en: {
+                "lang":"🌍 Select Your Language :",
                 "welcome-text": "Our Wedding Functions 🎉",
                 "engagement": "💍 Engagement",
                 "mehendi": "🌿 Mehendi Ceremony",
@@ -292,6 +293,7 @@
                 "developer-message": "Designed & Developed with 💖 by SAI VENKAT"
             },
             te: {
+                "lang":"🌍 భాషను ఎంచుకోండి :",
                 "welcome-text": "మా వివాహ వేడుకలు 🎉",
                 "engagement": "💍 నిశ్చితార్థం",
                 "mehendi": "🌿 మెహెందీ వేడుక",
@@ -305,6 +307,7 @@
                 "developer-message": "💖 తో రూపొందించబడింది & అభివృద్ధి చేయబడింది: సాయి వెంకట్"
             },
             hi: {
+                "lang":"🌍 अपनी भाषा चुनें :",
                 "welcome-text": "हमारे शादी के कार्यक्रम 🎉",
                 "engagement": "💍 सगाई",
                 "mehendi": "🌿 मेहंदी समारोह",
