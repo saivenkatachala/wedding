@@ -205,6 +205,25 @@
                 font-size: 18px;
             }
         }
+
+
+
+        /* Floating Elements */
+        .floating {
+            position: fixed;
+            top: -50px;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) scale(0.8); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+        }
     </style>
     
     
@@ -315,23 +334,41 @@
             window.location.href = "index.html";
         }
 
-        // Floating Elements (Optimized)
+        let maxFloatingElements = 20;
+        let floatingElements = [];
+
         function createFloatingElement(imageSrc) {
+            if (floatingElements.length >= maxFloatingElements) return;
+
             let element = document.createElement("div");
             element.className = "floating";
             element.style.left = Math.random() * window.innerWidth + "px";
             element.style.animationDuration = (5 + Math.random() * 5) + "s";
             element.style.backgroundImage = `url(${imageSrc})`;
             document.body.appendChild(element);
-            setTimeout(() => document.body.removeChild(element), 10000);
+            floatingElements.push(element);
+
+            setTimeout(() => {
+                document.body.removeChild(element);
+                floatingElements = floatingElements.filter(e => e !== element);
+            }, 10000);
         }
 
+
         function startEffects() {
-            const images = ["lv1.png", "hh1.png", "h2.png", "pngegg.png", "p1.png", "ph1.png"];
-            setInterval(() => {
-                createFloatingElement(images[Math.floor(Math.random() * images.length)]);
-            }, 1000); // Reduced frequency for better performance
+            function animate() {
+                createFloatingElement("lv1.png");
+                createFloatingElement("hh1.png");
+                createFloatingElement("h2.png");
+                createFloatingElement("pngegg.png");
+                createFloatingElement("p1.png");
+                createFloatingElement("ph1.png");
+                requestAnimationFrame(animate);
+            }
+            animate();
         }
+
+        window.onload = startEffects;
 
         window.onload = startEffects;
 
