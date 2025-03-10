@@ -17,19 +17,29 @@
             font-family: 'Times New Roman', serif;
         }
         body {
-            background-color: #f5ebe0;
             text-align: center;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
+            color: white; /* Default text color */
+        }
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
         h1 {
             font-size: 2.5rem;
-            color: #d6336c;
+            color: #ffffff; /* White color for contrast */
             margin-top: 20px;
         }
         p {
             font-size: 1.2rem;
-            color: #444;
+            color: #ffffff; /* White color for contrast */
             margin: 10px auto;
             width: 90%;
         }
@@ -42,12 +52,29 @@
             margin: 10px;
             font-size: 1.2rem;
             border-radius: 8px;
-            background: #ff6b6b;
-            color: white;
+            background: #f7aef8;
+            color: black;
             transition: 0.3s;
         }
         .buttons a:hover {
             background: #e63946;
+        }
+
+        .buttons1 {
+            margin-top: 20px;
+        }
+        .buttons1 a {
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            background: #48cae4;
+            color: black;
+            transition: 0.3s;
+        }
+        .buttons1 a:hover {
+            background: #00b4d8;
         }
 
         /* Moments Section */
@@ -111,7 +138,7 @@
         }
         .contact-message {
             font-size: 1.3rem;
-            color: #415a77;
+            color: #ffffff; /* White color for contrast */
             margin-bottom: 15px;
         }
         .contact-btn {
@@ -133,7 +160,7 @@
 
         /* Footer */
         footer {
-            background-color: #fb6f92;
+            background-color: rgba(251, 111, 146, 0.8); /* Semi-transparent background */
             color: #ffebcd;
             text-align: center;
             padding: 20px 0;
@@ -166,25 +193,23 @@
             .floating { display: none; } /* Hide floating elements on small screens */
         }
 
-
-
         .language-switch {
             margin-top: 20px;
-            text-align: center;
         }
-        .language-switch select {
+        select {
             padding: 8px;
             font-size: 16px;
             border-radius: 5px;
             border: 1px solid #d6336c;
-            background: #fff;
-            color: #d6336c;
-            cursor: pointer;
         }
-        
     </style>
 </head>
 <body>
+    <!-- Video Background -->
+    <video id="video-background" autoplay muted loop>
+        <source src="klklklk.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <!-- Language Switcher -->
     <div class="language-switch">
         <label for="language-select" id = "lang">🌍 Select Your Language:</label>
@@ -200,10 +225,14 @@
     <p id="description-text">"A journey of love, laughter, and happily ever after. Relive the precious moments from our wedding functions!"</p>
 
     <div class="buttons">
-        <a href="functions.html" id="wedding-functions">View Wedding Functions</a>
+        <a href="functions.html" id="wedding-functions">✨View Wedding Functions✨</a>
+    </div>
+    <br>
+    <div class="buttons1">
+        <a href="#" id="wedding-functions1">✨Wedding Invitation Card✨</a>
     </div>
 
-    <h2 style="margin-top: 30px; color: #d6336c;" id="cherished-moments">✨ Cherished Moments ✨</h2>
+    <h2 style="margin-top: 30px; color: #bfdbf7;" id="cherished-moments">✨ Cherished Moments ✨</h2>
     <div class="moments">
         <div class="moment" onclick="location.href='eng.html'">
             <img src="e1.jpg" loading="lazy" alt="Engagement Ceremony">
@@ -412,8 +441,8 @@ style.innerHTML = `
     position: fixed;
     left: -150px;
     bottom: 20%;
-    width: 400px; /* Increase width */
-    height: 250px; /* Increase height */
+    width: 500px; /* Increase width */
+    height: 350px; /* Increase height */
     background: url('sps.png') no-repeat center/contain;
     animation: runAcross 7s ease-in-out forwards;
     z-index: 1000;
