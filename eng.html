@@ -141,7 +141,23 @@
   <button class="auto-play-btn" onclick="toggleAutoPlay()">Auto Play</button>
   
   <div class="gallery" id="gallery"></div>
-
+  <div style="margin-top: 30px; text-align: center;">
+    <button onclick="goBack()" style="
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    " 
+    onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
+      ⬅ Back to Functions
+    </button>
   <div class="modal" id="modal">
     <button class="close-btn" onclick="closeModal()">&times;</button>
     <img class="modal-content" id="modal-image" src="" alt="Full view image" />
@@ -258,6 +274,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchImages();
   playMusic(); // Start with first track
 });
+    fetchImages();
+    function goBack() {
+      window.location.href = "functions.html"; // Change this to the actual functions page
+    }
 
     
   </script>
