@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="123.png">
   <title>Engagement Gallery</title>
+  <link rel="icon" href="imageg.png">
   <style>
     * {
       box-sizing: border-box;
@@ -28,16 +28,22 @@
       max-width: 1000px;
       margin: auto;
     }
-    .gallery img {
+    .gallery-item {
+      position: relative;
       width: 100%;
       height: 150px;
-      object-fit: cover;
       border-radius: 5px;
+      overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .gallery img:hover {
+    .gallery-item:hover {
       transform: scale(1.05);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .modal {
       display: none;
@@ -48,37 +54,19 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.9);
-      display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       padding: 10px;
+    }
+    .modal.active {
+      display: flex;
     }
     .modal-content {
       max-width: 90%;
       max-height: 80vh;
       border-radius: 5px;
       object-fit: contain;
-    }
-    .modal-options {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .modal-options button, .auto-play-btn {
-      padding: 12px 18px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #fff;
-      transition: background 0.2s ease;
-      font-weight: bold;
-    }
-    .modal-options button:hover, .auto-play-btn:hover {
-      background: #ddd;
     }
     .nav-buttons {
       position: absolute;
@@ -134,6 +122,16 @@
     .auto-play-btn:hover {
       background: #ff4b2b;
     }
+    .media-indicator {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 0.8rem;
+    }
   </style>
 </head>
 <body>
@@ -142,13 +140,13 @@
   
   <div class="gallery" id="gallery"></div>
   <div style="margin-top: 30px; text-align: center;">
-    <button onclick="goBack()" style="
+    <button onclick="goToVideoPlayer()" style="
       padding: 12px 25px;
       font-size: 1.1rem;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      background: linear-gradient(45deg, #4285F4, #34A853);
       color: white;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -156,10 +154,31 @@
     " 
     onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
     onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
-      ⬅ Back to Functions
+      Go to Video Player
     </button>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <button onclick="goBack()" style="
+          padding: 12px 25px;
+          font-size: 1.1rem;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          background: linear-gradient(45deg, #ff416c, #ff4b2b);
+          color: white;
+          font-weight: bold;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        " 
+        onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
+          ⬅ Back to Functions
+        </button>
+  </div>
+
   <div class="modal" id="modal">
     <button class="close-btn" onclick="closeModal()">&times;</button>
+    <div class="media-indicator">Image</div>
     <img class="modal-content" id="modal-image" src="" alt="Full view image" />
     <div class="nav-buttons">
       <button onclick="prevImage()">&#10094;</button>
@@ -170,7 +189,7 @@
   <audio id="background-music" loop></audio>
 
   <script>
-     const folderIds = [
+    const folderIds = [
       "1oezSWAGZIecSwrL7NLj9uOGGsOTwa06s",
       "1goYZc631Xe12E-pifBZnRvJHbQfSGBMU",
       "1lA6b9chPzpx6E1TGzU1_kS2XwzxvGZ7o",
@@ -203,18 +222,20 @@
     function displayGallery() {
       const gallery = document.getElementById("gallery");
       gallery.innerHTML = images.map((file, index) => 
-        `<img src="${file.thumbnailLink}" alt="${file.name}" onclick="openModal(${index})">`
+        `<div class="gallery-item" onclick="openModal(${index})">
+          <img src="${file.thumbnailLink.replace('=s220', '=s400')}" alt="${file.name}">
+        </div>`
       ).join("");
     }
 
     function openModal(index) {
       currentIndex = index;
-      document.getElementById("modal").style.display = "flex";
+      document.getElementById("modal").classList.add("active");
       document.getElementById("modal-image").src = `https://lh3.googleusercontent.com/d/${images[currentIndex].id}=s2000`;
     }
 
     function closeModal() {
-      document.getElementById("modal").style.display = "none";
+      document.getElementById("modal").classList.remove("active");
       clearInterval(autoPlayInterval);
     }
 
@@ -230,56 +251,66 @@
 
     function toggleAutoPlay() {
       autoPlayEnabled = !autoPlayEnabled;
+      const autoPlayBtn = document.querySelector(".auto-play-btn");
+      autoPlayBtn.textContent = autoPlayEnabled ? "Stop Auto Play" : "Auto Play";
+      
       clearInterval(autoPlayInterval);
       if (autoPlayEnabled) {
-        autoPlayInterval = setInterval(nextImage, 6000);
+        autoPlayInterval = setInterval(nextImage, 3000);
       }
     }
 
     const musicTracks = ["bgsong.mp3"];
-let currentTrackIndex = 0;
+    let currentTrackIndex = 0;
 
-function playMusic() {
-  const audio = document.getElementById("background-music");
-  
-  // Remove any existing event listeners to prevent duplicates
-  audio.removeEventListener('ended', playNextTrack);
-  
-  // Set the current track
-  audio.src = musicTracks[currentTrackIndex];
-  
-  // Play the current track
-  audio.play()
-    .then(() => {
-      console.log(`Now playing: ${musicTracks[currentTrackIndex]}`);
-    })
-    .catch(error => {
-      console.error("Audio playback error:", error);
-    });
-  
-  // Set up listener for when this track ends
-  audio.addEventListener('ended', playNextTrack);
-}
+    function playMusic() {
+      const audio = document.getElementById("background-music");
+      audio.removeEventListener('ended', playNextTrack);
+      audio.src = musicTracks[currentTrackIndex];
+      audio.play()
+        .then(() => {
+          console.log(`Now playing: ${musicTracks[currentTrackIndex]}`);
+        })
+        .catch(error => {
+          console.error("Audio playback error:", error);
+        });
+      audio.addEventListener('ended', playNextTrack);
+    }
 
-function playNextTrack() {
-  // Move to next track (or loop back to first if at end)
-  currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
-  
-  // Play the next track
-  playMusic();
-}
+    function playNextTrack() {
+      currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+      playMusic();
+    }
 
-// Start the music player
-document.addEventListener("DOMContentLoaded", () => {
-  fetchImages();
-  playMusic(); // Start with first track
-});
-    fetchImages();
+    function goToVideoPlayer() {
+      window.location.href = "video.html";
+    }
     function goBack() {
       window.location.href = "functions.html"; // Change this to the actual functions page
     }
 
-    
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchImages();
+      playMusic();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById("modal");
+      if (!modal.classList.contains("active")) return;
+      
+      switch(e.key) {
+        case 'ArrowLeft':
+          prevImage();
+          break;
+        case 'ArrowRight':
+          nextImage();
+          break;
+        case 'Escape':
+          closeModal();
+          break;
+      }
+    });
   </script>
 </body>
 </html>
