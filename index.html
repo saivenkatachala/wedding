@@ -159,15 +159,35 @@
         }
 
         /* Footer */
-        footer {
-            background-color: rgba(251, 111, 146, 0.8); /* Semi-transparent background */
+        /* footer {
+            background-color: rgba(251, 111, 146, 0.8); 
             color: #ffebcd;
             text-align: center;
             padding: 20px 0;
             font-size: 1.1rem;
             font-weight: bold;
             margin-top: 20px;
-        }
+        } */
+
+        .content-wrapper {
+        min-height: 100vh;
+        padding-bottom: 100px; /* Adjust this to match your footer height */
+        position: relative;
+    }
+    
+    /* Modify your existing footer style */
+    footer {
+        background-color: rgba(251, 111, 146, 0.8); 
+        color: #ffebcd;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+       
         footer .developer-message {
             font-style: italic;
             font-size: 1.1rem;
@@ -202,9 +222,26 @@
             border-radius: 5px;
             border: 1px solid #d6336c;
         }
+
+
+
+         /* Add this to your existing styles */
+         .wedding-video-container {
+            margin: 30px auto;
+            max-width: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wedding-video {
+            width: 100%;
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <div class="content-wrapper">
     <!-- Video Background -->
     <video id="video-background" autoplay muted loop>
         <source src="backbg.mp4" type="video/mp4">
@@ -227,51 +264,29 @@
     <div class="buttons">
         <a href="functions.html" id="wedding-functions">✨View Wedding Functions✨</a>
     </div>
-    <br>
-    <div class="buttons1">
-        <a href="#" id="wedding-functions1">✨Wedding Invitation Card✨</a>
-    </div>
 
-    <h2 style="margin-top: 30px; color: #bfdbf7;" id="cherished-moments">✨ Cherished Moments ✨</h2>
-    <div class="moments">
-        <div class="moment" onclick="location.href='eng.html'">
-            <img src="e1.jpg" loading="lazy" alt="Engagement Ceremony">
-            <div class="moment-text" id="moment-engagement">Engagement</div>
-        </div>
-        <div class="moment" onclick="location.href='mehendi.html'">
-            <img src="e1.jpg" loading="lazy" alt="Mehendi Ceremony">
-            <div class="moment-text" id="moment-mehendi">Mehendi Ceremony</div>
-        </div>
-        <div class="moment" onclick="location.href='haldi.html'">
-            <img src="e1.jpg" loading="lazy" alt="Haldi Ceremony">
-            <div class="moment-text" id="moment-haldi">Haldi Ceremony</div>
-        </div>
-        <div class="moment" onclick="location.href='sangeet.html'">
-            <img src="e1.jpg" loading="lazy" alt="Sangeet Night">
-            <div class="moment-text" id="moment-sangeet">Sangeet Night</div>
-        </div>
-        <div class="moment" onclick="location.href='wedding.html'">
-            <img src="e1.jpg" loading="lazy" alt="The Wedding">
-            <div class="moment-text" id="moment-wedding">The Wedding</div>
-        </div>
+    <div class="wedding-video-container">
+        <video class="wedding-video" autoplay muted loop playsinline>
+            <source src="main.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+    
+    <br>
 
     <!-- Audio -->
-    <audio id="bg-music" loop>
+    <!-- <audio id="bg-music" loop>
         <source src="ad1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-    </audio>
-    <!-- <button onclick="playMusic()" style="padding: 10px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Play Background Music
-    </button> -->
+    </audio> -->
 
-    <!-- Contact Section -->
     <div class="contact-section">
         <p class="contact-message" id="contact-message">For any queries or suggestions, feel free to contact us!</p>
         <a href="con1.html" class="contact-btn" id="contact-us">Contact Us</a>
     </div>
 
     <!-- Footer -->
+</div>
     <footer>
         <div class="footer-container">
             <p id="footer-text">&copy; 2025 SAI VENKAT. All rights reserved.</p>
@@ -405,7 +420,19 @@
             }
         }
 
-
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.wedding-video');
+            
+            // Try to play the video (required for some mobile browsers)
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Auto-play was prevented, show play button
+                    video.controls = true;
+                });
+            }
+        });
 
 
 
